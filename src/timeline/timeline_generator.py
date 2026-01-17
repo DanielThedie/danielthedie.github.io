@@ -1,6 +1,6 @@
 import yaml
 
-from ..helpers import fill_html_template
+from helpers import fill_html_template
 
 
 class TimelineGenerator:
