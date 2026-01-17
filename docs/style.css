@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  margin: 2em 0;
+}
+
+.menu ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0.5em 2em;
+  margin: 0;
+  background: #f5f5f5; /* Box background */
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Optional: subtle shadow */
+}
+
+.menu li {
+  display: inline; /* optional with flex, but keeps fallback */
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  transition: background 0.2s;
+  border-radius: 18px;
+}
+
+.menu a:hover {
+  background: #e0e0e0;
+}
