@@ -1,0 +1,12 @@
+software:
+  - title: nocturn
+    image: resources/nocturn_logo.png
+    languages: R, Rshiny
+    github: https://github.com/chronopsychiatry/AMBIENT-BD-nocturn
+    app: https://nocturn.bio.ed.ac.uk/
+    docs: https://github.com/chronopsychiatry/AMBIENT-BD-nocturn/wiki
+
+  - title: svgedit
+    languages: R
+    github:
+    app:
