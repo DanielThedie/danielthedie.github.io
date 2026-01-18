@@ -14,12 +14,14 @@ class TimelineGenerator:
         for event in self.events:
             image = event.get("image", "")
             title = event.get("title", "")
+            location = event.get("location", "")
             dates = event.get("dates", "")
             text = event.get("text", "")
             timeline_items_html += fill_html_template(
                 "templates/timeline-item.html",
                 image=image,
                 title=title,
+                location=location,
                 dates=dates,
                 text=text)
 
