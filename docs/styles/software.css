@@ -1,0 +1,19 @@
+.software-item {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 250px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 1em 0;
+    border: 2px solid #d4d4d4;
+    align-items: center;
+    text-align: center;
+}
+
+.software-image {
+    max-height: 100px;
+    max-width: 250px;
+    height: auto;
+    display: block;
+}

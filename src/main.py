@@ -1,5 +1,6 @@
 from generators.timeline_generator import TimelineGenerator
 from generators.publications_generator import PublicationsGenerator
+from generators.software_generator import SoftwareGenerator
 from helpers import create_html
 
 
@@ -23,9 +24,16 @@ class WebsiteGenerator:
         page_html = self.base_html.replace("<!-- CONTENT -->", html)
         create_html("docs/publications.html", page_html)
 
+    def generate_software(self):
+        sg = SoftwareGenerator("content/software.yaml")
+        html = sg.generate_software_html()
+        page_html = self.base_html.replace("<!-- CONTENT -->", html)
+        create_html("docs/software.html", page_html)
+
     def build(self):
         self.generate_index()
         self.generate_publications()
+        self.generate_software()
 
 
 if __name__ == "__main__":

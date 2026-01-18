@@ -7,6 +7,8 @@ software:
     docs: https://github.com/chronopsychiatry/AMBIENT-BD-nocturn/wiki
 
   - title: svgedit
+    image: 
     languages: R
-    github:
-    app:
+    github: https://github.com/DanielThedie/svgedit
+    app: https://cran.r-project.org/web/packages/svgedit/index.html
+    docs: https://cran.r-project.org/web/packages/svgedit/vignettes/multi-panel-figure.html

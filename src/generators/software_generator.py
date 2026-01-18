@@ -13,11 +13,22 @@ class SoftwareGenerator:
         software_items_html = ""
         for event in self.events:
             title = event.get("title", "")
+            image = event.get("image", "")
             languages = event.get("languages", [])
+            github = event.get("github", "")
+            app = event.get("app", "")
+            docs = event.get("docs", "")
+
+            image_html = f'<img src="{image}" alt="{title} logo" class="software-image"/>' if image else ""
+
             software_items_html += fill_html_template(
                 "templates/software-item.html",
                 title=title,
-                languages=languages
+                image_html=image_html,
+                languages=languages,
+                github=github,
+                app=app,
+                docs=docs
             )
 
         return f'<div class="software">\n{software_items_html}</div>'
