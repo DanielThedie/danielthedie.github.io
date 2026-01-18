@@ -4,7 +4,7 @@ body {
 
 .menu {
   display: flex;
-  justify-content: center; /* Center horizontally */
+  justify-content: center;
   margin: 2em 0;
 }
 
@@ -14,13 +14,13 @@ body {
   list-style: none;
   padding: 0.5em 2em;
   margin: 0;
-  background: #f5f5f5; /* Box background */
+  background: #ebebeb; /* Box background */
   border-radius: 18px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Optional: subtle shadow */
 }
 
 .menu li {
-  display: inline; /* optional with flex, but keeps fallback */
+  display: inline;
 }
 
 .menu a {
@@ -37,66 +37,83 @@ body {
 }
 
 /* Timeline styling (to move to own file sometime) */
+  .timeline {
+    position: relative;
+    width: 80%;
+    margin: 50px auto;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 49px;
+    width: 2px;
+    background: #d4d4d4;
+    border-radius: 2px;
+    z-index: 0;
+  }
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .timeline-side {
+    width: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .timeline-dot {
+    background: #d4d4d4;
+    border: 4px solid #d4d4d4;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 39.5px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  .timeline-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  .timeline-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 22px;
+    flex: 1;
+  }
+
+  /* Mobile styling, can be re-enabled if needed
+    @media (max-width: 600px) {
     .timeline {
-        position: relative;
-        width: 80%;
-        margin: 50px auto;
-        padding-left: 40px;
-    }
-    /* Vertical line */
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: 30px;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background: #3498db;
-        border-radius: 2px;
+      width: 98%;
     }
     .timeline-item {
-        position: relative;
-        margin-bottom: 60px;
-        display: flex;
-        align-items: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .timeline-side {
+      width: 100px;
+      height: 40px;
+      margin-bottom: 12px;
     }
     .timeline-dot {
-        position: absolute;
-        left: 22px;
-        background: #fff;
-        border: 4px solid #3498db;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        top: 0;
-        z-index: 1;
+      left: 38px;
+      top: 20px;
+      transform: translateY(-50%);
     }
     .timeline-image {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 0 3px 7px rgba(80, 80, 80, 0.09);
-        margin-right: 20px;
+      margin-bottom: 12px;
+      margin-right: 0;
     }
-    .timeline-content {
-        background: #fff;
-        border-radius: 10px;
-        padding: 18px 22px;
-        box-shadow: 0 2px 5px rgba(80, 80, 80, 0.10);
-        flex: 1;
-    }
-    @media (max-width: 600px) {
-        .timeline {
-        width: 98%;
-        padding-left: 0;
-        }
-        .timeline-item {
-        flex-direction: column;
-        align-items: flex-start;
-        }
-        .timeline-image {
-        margin-bottom: 12px;
-        margin-right: 0;
-        }
-    }
+  }
+  */
