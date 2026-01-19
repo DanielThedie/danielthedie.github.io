@@ -10,6 +10,7 @@ class TimelineGenerator:
         self.events = self.data.get("timeline", [])
 
     def generate_timeline_html(self):
+        page_title = "About"
         timeline_items_html = ""
         for event in self.events:
             image = event.get("image", "")
@@ -25,4 +26,6 @@ class TimelineGenerator:
                 dates=dates,
                 text=text)
 
-        return f'<div class="timeline">\n{timeline_items_html}</div>'
+        return (f'<h2>{page_title}</h2>\n'
+                f'<div class="timeline">\n'
+                f'{timeline_items_html}</div>')

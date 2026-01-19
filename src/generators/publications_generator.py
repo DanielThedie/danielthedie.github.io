@@ -1,6 +1,7 @@
 import yaml
 
 from helpers import fill_html_template
+from html_elements import opt_button
 
 
 class PublicationsGenerator:
@@ -10,6 +11,7 @@ class PublicationsGenerator:
         self.events = self.data.get("publications", [])
 
     def generate_publications_html(self):
+        page_title = "Publications"
         publications_items_html = ""
         for event in self.events:
             title = event.get("title", "")
@@ -23,7 +25,12 @@ class PublicationsGenerator:
                 first_author=first_author,
                 year=year,
                 journal=journal,
-                doi=doi
+                doi=opt_button(doi,
+                               'fa fa-link',
+                               'DOI',
+                               'button')
             )
 
-        return f'<div class="publications">\n{publications_items_html}</div>'
+        return (f'<h2>{page_title}</h2>\n'
+                f'<div class="publications">\n'
+                f'{publications_items_html}</div>')
