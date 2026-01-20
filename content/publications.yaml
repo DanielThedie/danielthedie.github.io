@@ -11,7 +11,7 @@ publications:
     year: "2025"
     doi: "https://doi.org/10.12688/wellcomeopenres.23662.1"
 
-  - title: "In vivo single-molecule imaging of RecB reveals eﬃcient repair of DNA damage in <i>Escherichia coli</i>"
+  - title: "In vivo single-molecule imaging of RecB reveals efficient repair of DNA damage in <i>Escherichia coli</i>"
     first_author: "Lepore"
     journal: "Nucleic Acids Research"
     year: "2025"
@@ -22,3 +22,33 @@ publications:
     journal: "Journal of Cell Science"
     year: "2024"
     doi: "https://doi.org/10.1242/jcs.262322"
+
+  - title: "Photophysical studies at cryogenic temperature reveal a novel photoswitching mechanism of rsEGFP2"
+    first_author: "Mantovanelli"
+    journal: "Journal of the American Chemical Society"
+    year: "2023"
+    doi: "https://doi.org/10.1021/jacs.3c01500"
+
+  - title: "mEos4b Photoconversion Efficiency Depends on Laser Illumination Conditions Used in PALM"
+    first_author: "Wulffele"
+    journal: "Journal of Physical Chemistry Letters"
+    year: "2022"
+    doi: "https://doi.org/10.1021/acs.jpclett.2c00933"
+
+  - title: "Mechanistic investigations of green mEos4b reveal a dynamic long-lived dark state"
+    first_author: "De Zitter"
+    journal: "Journal of the American Chemical Society"
+    year: "2020"
+    doi: "https://doi.org/10.1021/jacs.0c01880"
+
+  - title: "Mechanistic investigation of mEos4b reveals a strategy to reduce track interruptions in sptPALM"
+    first_author: "De Zitter"
+    journal: "Nature Methods"
+    year: "2019"
+    doi: "https://doi.org/10.1038/s41592-019-0462-3"
+
+  - title: "Photoswitching of green mEos2 by intense 561 nm light perturbs efficient green-to-red photoconversion in localization microscopy"
+    first_author: "Thédié"
+    journal: "Journal of Physical Chemistry Letters"
+    year: "2017"
+    doi: "https://doi.org/10.1021/acs.jpclett.7b01701"
