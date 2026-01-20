@@ -17,6 +17,12 @@ jobs:
         with:
           ref: deploy
 
+      # Set committer identity
+      - name: Set up committer identity
+        run: |
+          git config --global user.name "DanielThedie"
+          git config --global user.email "dthedie@gmail.com"
+
       # Fetch the latest main branch
       - name: Fetch main branch
         run: git fetch origin main
@@ -40,10 +46,6 @@ jobs:
         run: python src/main.py
 
       # Commit generated files
-      - name: Set up committer identity
-        run: |
-          git config --global user.name "DanielThedie"
-          git config --global user.email "dthedie@gmail.com"
       - name: Add generated content
         run: |
           git add docs/
