@@ -11,43 +11,23 @@ jobs:
   build-site:
     runs-on: ubuntu-latest
     steps:
-      # Checkout source code
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v3
-        with:
-          ref: deploy
 
-      # Set committer identity
-      - name: Set up committer identity
-        run: |
-          git config --global user.name "DanielThedie"
-          git config --global user.email "dthedie@gmail.com"
-
-      # Fetch the latest main branch
-      - name: Fetch main branch
-        run: git fetch origin main
-
-      # Merge main into deploy branch (to have the latest code)
-      - name: Merge main into deploy
-        run: git merge origin/main --no-edit --allow-unrelated-histories
-
-      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
 
-      # Install dependencies
       - name: Install PyYAML
         run: pip install pyyaml
 
-      # Generate the site
-      - name: Run site generation
+      - name: Build site
         run: python src/main.py
 
-      # Commit generated files
-      - name: Add generated content
-        run: |
-          git add docs/
-          git commit -m "Automated site regeneration" || echo "No changes to commit"
-          git push origin deploy
+      - name: Deploy to deploy branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: deploy
+          publish_dir: ./docs
