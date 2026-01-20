@@ -1,0 +1,50 @@
+name: Build and Deploy Static Site
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-site:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout source code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: deploy
+
+      # Fetch the latest main branch
+      - name: Fetch main branch
+        run: git fetch origin main
+
+      # Merge main into deploy branch (to have the latest code)
+      - name: Merge main into deploy
+        run: git merge origin/main --no-edit
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Install dependencies
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      # Generate the site
+      - name: Run site generation
+        run: python src/main.py
+
+      # Configure Git for commit
+      - name: Set up committer identity
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      # Commit generated files
+      - name: Add generated content
+        run: |
+          git add docs/
+          git commit -m "Automated site regeneration" || echo "No changes to commit"
+          git push origin deploy
