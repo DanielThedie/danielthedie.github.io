@@ -69,3 +69,34 @@ h2 {
 .button:hover {
     background: #357ab8;
 }
+
+.bio-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.8em;
+}
+
+.bio-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  background: #6495ED;
+  border-radius: 50%;
+  padding: 0;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.bio-link .fa,
+.bio-link .fab {
+  font-size: 1.2em;
+}
+
+.bio-link:hover {
+  background: #357ab8;
+}
