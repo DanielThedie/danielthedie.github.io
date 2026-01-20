@@ -17,7 +17,7 @@
   .about-item {
     display: flex;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     position: relative;
   }
   .about-side {
@@ -63,6 +63,7 @@
       flex-direction: row;
       align-items: flex-start;
       flex-wrap: wrap;
+      margin-bottom: 0;
     }
     .about-side {
       width: 100px;
