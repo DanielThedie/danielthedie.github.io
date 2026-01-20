@@ -54,7 +54,7 @@
     text-align: justify;
   }
 
-  /* Mobile styling, can be re-enabled if needed
+  /* Mobile styling */
     @media (max-width: 600px) {
     .about {
       width: 98%;
@@ -69,7 +69,6 @@
       margin-bottom: 12px;
     }
     .about-dot {
-      left: 38px;
       top: 20px;
       transform: translateY(-50%);
     }
@@ -78,4 +77,4 @@
       margin-right: 0;
     }
   }
-  */
+ 
