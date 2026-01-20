@@ -3,7 +3,7 @@ software:
     image: resources/nocturn_logo.png
     languages: R, Rshiny
     description: |
-      nocturn is a web app and R package for the analysis and visualisation of sleep data.
+      A web app and R package for the analysis and visualisation of sleep data.
     github: https://github.com/chronopsychiatry/AMBIENT-BD-nocturn
     app: https://nocturn.bio.ed.ac.uk/
     docs: https://github.com/chronopsychiatry/AMBIENT-BD-nocturn/wiki
@@ -13,7 +13,7 @@ software:
     image: resources/svgedit_logo.png
     languages: R
     description: |
-      svgedit is an R package to create complex figures using SVG files as templates.
+      An R package to create complex figures using SVG files as templates.
     github: https://github.com/DanielThedie/svgedit
     app: 
     docs: https://cran.r-project.org/web/packages/svgedit/vignettes/multi-panel-figure.html
@@ -23,7 +23,7 @@ software:
     image: resources/BioDareLogo.png
     languages: Angular, Typescript, Java
     description: |
-      BioDare2 is an online repository and analysis platform for circadian data. I have been its maintainer and developer since 2025.
+      An online repository and analysis platform for circadian data. I have been its maintainer and developer since 2025.
     github: 
     app: https://biodare2.ed.ac.uk/
     docs: 

@@ -1,9 +1,9 @@
-  .timeline {
+  .about {
     position: relative;
     width: 80%;
     margin: 50px auto;
   }
-  .timeline::before {
+  .about::before {
     content: '';
     position: absolute;
     top: 0;
@@ -14,20 +14,20 @@
     border-radius: 2px;
     z-index: 0;
   }
-  .timeline-item {
+  .about-item {
     display: flex;
     align-items: center;
     margin-bottom: 60px;
     position: relative;
   }
-  .timeline-side {
+  .about-side {
     width: 100px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .timeline-dot {
+  .about-dot {
     background: #fff;
     border: 2px solid #6495ED;
     border-radius: 50%;
@@ -39,14 +39,14 @@
     transform: translateY(-50%);
     z-index: 1;
   }
-  .timeline-image {
+  .about-image {
     width: 140px;
     height: 140px;
     object-fit: cover;
     border-radius: 10px;
     margin-right: 20px;
   }
-  .timeline-content {
+  .about-content {
     background: #fff;
     border-radius: 10px;
     padding: 18px 22px;
@@ -56,24 +56,24 @@
 
   /* Mobile styling, can be re-enabled if needed
     @media (max-width: 600px) {
-    .timeline {
+    .about {
       width: 98%;
     }
-    .timeline-item {
+    .about-item {
       flex-direction: column;
       align-items: flex-start;
     }
-    .timeline-side {
+    .about-side {
       width: 100px;
       height: 40px;
       margin-bottom: 12px;
     }
-    .timeline-dot {
+    .about-dot {
       left: 38px;
       top: 20px;
       transform: translateY(-50%);
     }
-    .timeline-image {
+    .about-image {
       margin-bottom: 12px;
       margin-right: 0;
     }
