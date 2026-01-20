@@ -23,7 +23,7 @@ jobs:
 
       # Merge main into deploy branch (to have the latest code)
       - name: Merge main into deploy
-        run: git merge origin/main --no-edit
+        run: git merge origin/main --no-edit --allow-unrelated-histories
 
       # Set up Python
       - name: Set up Python
