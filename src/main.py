@@ -1,4 +1,4 @@
-from generators.site_generator import SiteGenerator
+from site_generator import SiteGenerator
 
 
 def main():
