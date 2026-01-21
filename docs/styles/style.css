@@ -7,7 +7,7 @@ body {
   background: #f9f9f9;
 }
 
-h2 {
+h2.page-title {
   text-align: center;
   letter-spacing: 0.04em;
   font-size: 2em;
@@ -43,7 +43,6 @@ h2 {
 .menu {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin: 2em 0;
   position: relative;
 }
