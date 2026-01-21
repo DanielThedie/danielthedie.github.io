@@ -12,7 +12,7 @@ def main():
     gen.add_from_yaml("index")
     gen.add_from_yaml("publications")
     gen.add_from_yaml("software")
-    # gen.add_blog("blog")
+    gen.add_blog("blog")
 
 
 if __name__ == "__main__":
