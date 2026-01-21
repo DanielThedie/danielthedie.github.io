@@ -24,7 +24,17 @@ software:
     languages: Angular, Typescript, Java
     description: |
       An online repository and analysis platform for circadian data. I have been its maintainer and developer since 2025.
-    github: 
+    github: https://github.com/BioDare2
     app: https://biodare2.ed.ac.uk/
-    docs: 
+    docs: https://biodare2.ed.ac.uk/documents/all
     doi: https://doi.org/10.1007/978-1-0716-1912-4_2
+
+  - title: PyBerries
+    image: resources/PyB_logo.png
+    languages: Python
+    description: |
+      A package for handling and analysing multiple data tables from the BACMMAN image analysis software.
+    github: https://gitlab.com/MEKlab/pyberries
+    app:
+    docs: https://gitlab.com/MEKlab/pyberries/-/tree/main/doc?ref_type=heads
+    doi:
