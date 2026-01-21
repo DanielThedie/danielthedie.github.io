@@ -14,21 +14,6 @@
 
     <title>Daniel Thédié</title>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Daniel Thédié",
-      "url": "https://danielthedie.github.io/",
-      "sameAs": [
-        "https://github.com/DanielThedie",
-        "https://orcid.org/0000-0002-1352-7245"
-      ],
-      "email": "daniel.thedie@ed.ac.uk",
-      "jobTitle": "Research Software Engineer",
-      "affiliation": "University of Edinburgh"
-    }
-    </script>
   </head>
 
   <body>
@@ -39,6 +24,8 @@
       </div>
 
       <img src="resources/Profile.jpg" alt="Picture of Daniel Thédié" class="profile-pic" />
+
+      <p class="subtitle">Research Software Engineer at the University of Edinburgh</p>
 
       <div class="bio-links">
       <a href="mailto:daniel.thedie@ed.ac.uk" class="bio-link" target="_blank" rel="noopener">
@@ -53,10 +40,15 @@
       </div>
       
       <nav class="menu">
-        <ul>
-            <li><a href="index.html">About</a></li>
-            <li><a href="software.html">Software</a></li>
-            <li><a href="publications.html">Publications</a></li>
+        <div class="menu-burger" id="menuBurger" aria-label="Open menu" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="menuList">
+          <li><a href="index.html">About</a></li>
+          <li><a href="software.html">Software</a></li>
+          <li><a href="publications.html">Publications</a></li>
         </ul>
       </nav>
 
@@ -108,5 +100,8 @@
 </div>
 
     </main>
+
+  <script src="scripts/menu.js"></script>
+
   </body>
 </html>

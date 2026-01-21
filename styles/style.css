@@ -21,6 +21,14 @@ h2 {
   font-size: 1em;
 }
 
+.subtitle {
+  text-align: center;
+  font-size: 1.2em;
+  color: #777777;
+  margin-top: -10px;
+  margin-bottom: 1.5em;
+}
+
 .profile-pic {
   display: block;
   margin: 0 auto 1em auto;
@@ -35,7 +43,9 @@ h2 {
 .menu {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 2em 0;
+  position: relative;
 }
 
 .menu ul {
@@ -64,6 +74,53 @@ h2 {
 
 .menu a:hover {
   background: #e0e0e0;
+}
+
+.menu-burger {
+  display: none;
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 2.5em;
+  height: 2.5em;
+  background: #adadad;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.menu-burger span {
+  display: block;
+  width: 1.5em;
+  height: 0.2em;
+  background: #fff;
+  margin: 0.2em 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 600px) {
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 17%;
+    background: #ebebeb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    border-radius: 18px;
+    padding: 1em 2em;
+    z-index: 100;
+  }
+  .menu ul.menu-open {
+    display: flex;
+  }
+  .menu-burger {
+    display: flex;
+  }
 }
 
 .button {
