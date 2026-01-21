@@ -10,7 +10,7 @@
     bottom: 0;
     left: 50px;
     width: 2px;
-    background: #6495ED;
+    background: var(--accent-color);
     border-radius: 2px;
     z-index: 0;
   }
@@ -29,7 +29,7 @@
   }
   .about-dot {
     background: #fff;
-    border: 2px solid #6495ED;
+    border: 2px solid var(--accent-color);
     border-radius: 50%;
     width: 15px;
     height: 15px;
@@ -52,6 +52,10 @@
     padding: 18px 22px;
     flex: 1;
     text-align: justify;
+  }
+
+  .about-text {
+    color: #777777;
   }
 
   /* Mobile styling */
