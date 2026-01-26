@@ -11,7 +11,7 @@ about:
     dates: 2020 - 2024
     text: |
       After my PhD, I wanted to apply my knowledge of super-resolution microscopy to biological research. I moved to Edinburgh to study the repair of DNA double-strand breaks in <i>E.coli</i>. I developed my knowledge of image analysis and deep-learning, and created a Python package (PyBerries) to analyse tabular data from microscopy experiments.
-  - image: resources/RSE_job.png
+  - image: resources/Person_working_on_code.png
     title: Research Software Engineer
     location: Edinburgh, UK
     dates: 2025 - Present
