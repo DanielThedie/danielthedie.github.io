@@ -9,7 +9,6 @@ from helpers import format_date
 
 class SiteGenerator:
     def __init__(self,
-                 pages_yaml,
                  content_folder,
                  templates_folder,
                  docs_folder):
@@ -17,7 +16,7 @@ class SiteGenerator:
         self.templates = Path(templates_folder)
         self.docs = Path(docs_folder)
         self.base = self.templates / "base.html"
-        self.pages = self.read_yaml(pages_yaml)['pages']
+        self.pages = self.read_yaml(self.content / 'pages.yaml')['pages']
 
     def read_html(self, file_path):
         with open(file_path, "r", encoding="utf-8") as f:

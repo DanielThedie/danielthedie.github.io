@@ -3,7 +3,6 @@ from site_generator import SiteGenerator
 
 def main():
     gen = SiteGenerator(
-        pages_yaml="src/pages.yaml",
         content_folder="content",
         templates_folder="templates",
         docs_folder="docs"
