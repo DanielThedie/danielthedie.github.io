@@ -166,3 +166,9 @@ h2.page-title {
 .bio-link:hover {
   background: var(--accent-dark);
 }
+
+.centre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
