@@ -1,6 +1,7 @@
 import yaml
 import markdown
 import re
+import os
 from pathlib import Path
 
 from html_elements import format_image, format_buttons
@@ -27,9 +28,9 @@ class SiteGenerator:
             f.write(content)
 
     def update_html(self, page, placeholder, new_content):
-        page_html = self.read_html(self.docs / f"{page}.html")
+        page_html = self.read_html(page)
         page_html = page_html.replace(placeholder, new_content)
-        self.write_html(self.docs / f"{page}.html", page_html)
+        self.write_html(page, page_html)
 
     def fill_html_template(self, template_path, **kwargs):
         with open(template_path, "r", encoding="utf-8") as f:
@@ -57,36 +58,53 @@ class SiteGenerator:
                 self.templates / f'{title}-item.html',
                 **event)
         content_html = self.page_wrapper(title, items_html)
-        self.update_html(name, "<!-- CONTENT -->", content_html)
+        if name == 'index':
+            self.update_html(self.docs / 'index.html', "<!-- CONTENT -->", content_html)
+        else:
+            self.update_html(self.docs / name / 'index.html', "<!-- CONTENT -->", content_html)
 
     def add_blog(self, name):
         blog_folder = self.content / name
         blog_posts = sorted(blog_folder.glob("*.md"), reverse=True)
-        if not (self.docs / f"{name}.html").exists() or not blog_posts:
+        if not blog_posts:
             return
-        blog_html = ""
         for post in blog_posts:
-            with open(post, 'r', encoding='utf-8') as f:
-                md_text = f.read()
-            html = markdown.markdown(md_text)
+            target_path = self.docs / 'blog' / post.stem
+            if not target_path.exists:
+                os.mkdir(target_path)
+            self.add_blog_post(Path(post))
 
-            blog_date = format_date(post.stem.split('_')[0])
-            metadata_html = (f'\n<div class="metadata">'
-                             f'Posted on {blog_date}</div>')
-            html = re.sub(r'(<h1[^>]*>.*?</h1>)', r'\1' + metadata_html,
-                          html, count=1)
-            blog_html += self.fill_html_template(
-                self.templates / f'{name}-item.html', content=html
-                )
-        content_html = self.page_wrapper(name, blog_html)
-        self.update_html(name, "<!-- CONTENT -->", content_html)
+    def add_blog_post(self, md_file: Path | str):
+        name = md_file.stem
+        with open(md_file, 'r', encoding='utf-8') as f:
+                md_text = f.read()
+        html = markdown.markdown(md_text)
+
+        blog_date = format_date(name.split('_')[0])
+        metadata_html = (f'\n<div class="metadata">'
+                         f'Posted on {blog_date}</div>')
+        html = re.sub(r'(<h1[^>]*>.*?</h1>)', r'\1' + metadata_html,
+                      html, count=1)
+        blog_html = self.fill_html_template(
+            self.templates / 'blog-item.html', content=html
+        )
+        content_html = self.page_wrapper('Blog', blog_html)
+        base_html = self.read_html(self.base)
+        self.write_html(self.docs / 'blog' / name / 'index.html', base_html)
+        self.update_html(self.docs / 'blog' / name / 'index.html', "<!-- CONTENT -->", content_html)
 
     def create_pages(self):
         for page in self.pages:
             title = page.get('title', page['name'])
             base_html = self.read_html(self.base)
-            self.write_html(self.docs / f"{page['name']}.html", base_html)
+            if page['name'] == 'index':
+                path = self.docs
+            else:
+                path = self.docs / page['name']
+                if not path.exists:
+                    os.mkdir(self.docs / page['name'])
+            self.write_html(path / 'index.html', base_html)
 
             style_html = (f'<link href="styles/{title}.css" '
                           f'rel="stylesheet" />\n')
-            self.update_html(page['name'], "<!-- STYLESHEET -->", style_html)
+            self.update_html(path / 'index.html', "<!-- STYLESHEET -->", style_html)
