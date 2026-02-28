@@ -4,7 +4,7 @@ import re
 import os
 from pathlib import Path
 
-from html_elements import format_image, format_buttons
+from html_elements import format_image, format_buttons, add_blog_buttons
 from helpers import format_date
 
 
@@ -74,8 +74,8 @@ class SiteGenerator:
         blog_posts = self.get_blog_posts()
         if not blog_posts:
             return
-        blog_html = ""
-        for post in blog_posts:
+        for i, post in enumerate(blog_posts):
+            page = dict()
             with open(post, 'r', encoding='utf-8') as f:
                 md_text = f.read()
             html = markdown.markdown(md_text)
@@ -83,10 +83,11 @@ class SiteGenerator:
             blog_date = format_date(post.stem.split('_')[0])
             metadata_html = (f'\n<div class="metadata">'
                              f'Posted on {blog_date}</div>')
-            html = re.sub(r'(<h1[^>]*>.*?</h1>)', r'\1' + metadata_html,
+            page['content'] = re.sub(r'(<h1[^>]*>.*?</h1>)', r'\1' + metadata_html,
                           html, count=1)
+            add_blog_buttons(page, blog_posts, i)
             blog_html = self.fill_html_template(
-                self.templates / 'blog-item.html', content=html
+                self.templates / 'blog-item.html', **page
                 )
             content_html = self.page_wrapper('blog', blog_html)
             self.update_html(f'blog/{post.stem}', "<!-- CONTENT -->", content_html)
@@ -105,6 +106,6 @@ class SiteGenerator:
         out_folder = self.docs / 'blog'
         if not out_folder.exists: os.mkdir(self.docs / 'blog')
         for post in blog_posts:
-            blog_style = ('<link href="styles/blog.css" rel="stylesheet" />\n')
+            blog_style = ('<link href="/styles/blog.css" rel="stylesheet" />\n')
             self.write_html(self.docs / 'blog' / f'{post.stem}.html', base_html)
             self.update_html(f'blog/{post.stem}', "<!-- STYLESHEET -->", blog_style)
