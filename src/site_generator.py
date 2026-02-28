@@ -68,10 +68,7 @@ class SiteGenerator:
                 self.templates / f'{title}-item.html',
                 **event)
         content_html = self.page_wrapper(title, items_html)
-        if name == 'index':
-            self.update_html(self.docs / 'index.html', "<!-- CONTENT -->", content_html)
-        else:
-            self.update_html(self.docs / name / 'index.html', "<!-- CONTENT -->", content_html)
+        self.update_html(self.docs / f'{name}.html', "<!-- CONTENT -->", content_html)
 
     def add_blog(self):
         blog_posts = self.get_blog_posts()
@@ -81,7 +78,7 @@ class SiteGenerator:
             page = dict()
             with open(post, 'r', encoding='utf-8') as f:
                 md_text = f.read()
-        html = markdown.markdown(md_text)
+            html = markdown.markdown(md_text)
 
             blog_date = format_date(post.stem.split('_')[0])
             metadata_html = (f'\n<div class="metadata">'
@@ -93,7 +90,7 @@ class SiteGenerator:
                 self.templates / 'blog-item.html', **page
                 )
             content_html = self.page_wrapper('blog', blog_html)
-            self.update_html(f'blog/{post.stem}', "<!-- CONTENT -->", content_html)
+            self.update_html(self.docs / 'blog' / f'{post.stem}.html', "<!-- CONTENT -->", content_html)
 
     def create_pages(self):
         base_html = self.base_html
@@ -101,14 +98,16 @@ class SiteGenerator:
             title = page.get('title', page['name'])
             self.write_html(self.docs / f"{page['name']}.html", base_html)
 
-            style_html = (f'<link href="styles/{title}.css" '
+            style_html = (f'<link href="/styles/{title}.css" '
                           f'rel="stylesheet" />\n')
-            self.update_html(page['name'], "<!-- STYLESHEET -->", style_html)
+            self.update_html(self.docs / f"{page['name']}.html", "<!-- STYLESHEET -->", style_html)
 
         blog_posts = self.get_blog_posts()
         out_folder = self.docs / 'blog'
-        if not out_folder.exists: os.mkdir(self.docs / 'blog')
+        if not out_folder.exists(): os.mkdir(self.docs / 'blog')
         for post in blog_posts:
             blog_style = ('<link href="/styles/blog.css" rel="stylesheet" />\n')
             self.write_html(self.docs / 'blog' / f'{post.stem}.html', base_html)
-            self.update_html(f'blog/{post.stem}', "<!-- STYLESHEET -->", blog_style)
+            self.update_html(self.docs / 'blog' / f'{post.stem}.html', "<!-- STYLESHEET -->", blog_style)
+            
+            
