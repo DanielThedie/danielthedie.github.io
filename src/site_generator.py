@@ -33,9 +33,9 @@ class SiteGenerator:
         return self.read_html(self.base).replace('<!-- LATEST_BLOG -->', f'\"blog/{latest_blog.stem}.html\"')
 
     def update_html(self, page, placeholder, new_content):
-        page_html = self.read_html(self.docs / f"{page}.html")
+        page_html = self.read_html(page)
         page_html = page_html.replace(placeholder, new_content)
-        self.write_html(self.docs / f"{page}.html", page_html)
+        self.write_html(page, page_html)
 
     def fill_html_template(self, template_path, **kwargs):
         with open(template_path, "r", encoding="utf-8") as f:
@@ -68,7 +68,10 @@ class SiteGenerator:
                 self.templates / f'{title}-item.html',
                 **event)
         content_html = self.page_wrapper(title, items_html)
-        self.update_html(name, "<!-- CONTENT -->", content_html)
+        if name == 'index':
+            self.update_html(self.docs / 'index.html', "<!-- CONTENT -->", content_html)
+        else:
+            self.update_html(self.docs / name / 'index.html', "<!-- CONTENT -->", content_html)
 
     def add_blog(self):
         blog_posts = self.get_blog_posts()
@@ -78,7 +81,7 @@ class SiteGenerator:
             page = dict()
             with open(post, 'r', encoding='utf-8') as f:
                 md_text = f.read()
-            html = markdown.markdown(md_text)
+        html = markdown.markdown(md_text)
 
             blog_date = format_date(post.stem.split('_')[0])
             metadata_html = (f'\n<div class="metadata">'
