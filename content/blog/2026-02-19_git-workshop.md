@@ -4,7 +4,7 @@ This week, I gave a 2-hour workshop on the basics of using git and GitHub. 9 peo
 
 You can find the [full workshop materials](https://github.com/BioRDM/practical_git_workshop)... on GitHub, and download the [presentation slides](https://github.com/BioRDM/practical_git_workshop/blob/main/Presentation/github_workshop.html) (in html format, opens in any web browser).
 
-<img src="resources/blog/git_workshop.jpg" alt="the room for the git workshop. A title slide is projected, and sheets of paper are on the tables"  width="80%" class="centre">
+<img src="/resources/blog/git_workshop.jpg" alt="the room for the git workshop. A title slide is projected, and sheets of paper are on the tables"  width="80%" class="centre">
 
 Below are a few thoughts on how I designed the workshop, and how it was received by participants.
 
@@ -14,7 +14,7 @@ For this workshop, I made the choice to not include *any* git terminal commands.
 
 Even when using a GUI, git comes with a whole range of specialised terms that can be offputting for newcomers - staging? Checkout? Clone? Pull request?, so I created my own "git glossary". Again, no terminal commands (those are easily found online), but short definitions of some of the main git terms.
 
-<img alt="A4 sheet with a glossary of git terms" src="resources/blog/git_glossary.png" width="40%" class="centre">
+<img alt="A4 sheet with a glossary of git terms" src="/resources/blog/git_glossary.png" width="40%" class="centre">
 
 For the practical parts of the workshop, I replaced lists of commands to be entered with screenshots of RStudio (which all participants already used) and GitHub.
 
