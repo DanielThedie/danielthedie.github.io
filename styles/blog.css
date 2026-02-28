@@ -14,3 +14,10 @@
     margin-bottom: 3em;
     margin-top: 0;
 }
+
+.blog-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
