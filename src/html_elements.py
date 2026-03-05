@@ -7,9 +7,19 @@ def image_html(image_url, alt_text="", css_class=""):
 def button_html(url, icon, label, css_class):
     if url:
         return (f'<a href="{url}" class="{css_class}" '
-                f'target="_blank" rel="noopener">'
+                f'rel="noopener">'
                 f'<span class="{icon}" '
                 f'style="margin-right:0.4em;"></span>{label}</a>')
+    return ""
+
+
+def button_html_rev(url, icon, label, css_class):
+    if url:
+        return (f'<a href="{url}" class="{css_class}" '
+                f'rel="noopener">'
+                f'{label}'
+                f'<span class="{icon}" '
+                f'style="margin-left:0.4em;"></span></a>')
     return ""
 
 
@@ -51,3 +61,37 @@ def format_buttons(event):
             'DOI',
             'button'
         )
+
+
+def add_blog_buttons(page, blog_list, blog_number):
+    if blog_number < len(blog_list) - 1:
+        page['next-blog'] = ''
+    else:
+        next_blog = blog_list[blog_number - 1]
+        title = get_blog_title(next_blog)  
+        page['next-blog'] = button_html_rev(
+            f'/blog/{next_blog.stem}.html',
+            'fas fa-arrow-right',
+            title,
+            'button'
+        )
+        
+    if blog_number == 0:
+        prev_blog = blog_list[blog_number + 1]
+        title = get_blog_title(prev_blog)
+        page['previous-blog'] = button_html(
+            f'/blog/{prev_blog.stem}.html',
+            'fas fa-arrow-left',
+            title,
+            'button'
+        )
+    else:
+        page['previous-blog'] = ''
+        
+    page['blog-list-menu'] = '' # Not implemented, could be added later
+
+
+def get_blog_title(blog_post):
+    with open(blog_post, 'r', encoding='utf-8') as f:
+        md_text = f.read()
+    return next(line[2:].strip() for line in md_text.splitlines() if line.startswith('# ')) 
