@@ -19,9 +19,8 @@
 }
 
 .software-image {
-    max-height: 100px;
     max-width: 250px;
-    height: auto;
+    height: 100px;
     display: block;
     object-fit: cover;
     margin-bottom: 1em;

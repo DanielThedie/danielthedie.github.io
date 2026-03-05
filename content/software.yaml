@@ -29,6 +29,26 @@ software:
     docs: https://biodare2.ed.ac.uk/documents/all
     doi: https://doi.org/10.1007/978-1-0716-1912-4_2
 
+  - title: Somnofy Downloader
+    image: resources/Terminal.png
+    languages: Python
+    description: |
+      A command line tool to download and quality-check sleep data from Somnofy devices using the VitalThings API.
+    github: https://github.com/chronopsychiatry/AMBIENT-BD-Somnofy-Data-Download
+    app:
+    docs: https://github.com/chronopsychiatry/AMBIENT-BD-Somnofy-Data-Download/blob/master/README.md
+    doi:
+
+  - title: REDCap Downloader
+    image: resources/Terminal.png
+    languages: Python
+    description: |
+      A command line tool to download and clean-up data from the REDCap platform for the Ambient-BD project. Uses the REDCap API.
+    github: https://github.com/chronopsychiatry/AMBIENT-BD-REDCap_downloader
+    app: 
+    docs: https://github.com/chronopsychiatry/AMBIENT-BD-REDCap_downloader/blob/main/README.md
+    doi: 
+
   - title: PyBerries
     image: resources/PyB_logo.png
     languages: Python
