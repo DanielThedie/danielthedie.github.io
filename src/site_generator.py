@@ -16,7 +16,6 @@ class SiteGenerator:
         self.content = Path(content_folder)
         self.templates = Path(templates_folder)
         self.docs = Path(docs_folder)
-        self.base = self.templates / "base.html"
         self.base_html = self.init_base()
         self.pages = self.read_yaml(self.content / 'pages.yaml')['pages']
 
@@ -30,7 +29,7 @@ class SiteGenerator:
 
     def init_base(self):
         latest_blog = self.get_blog_posts()[0]
-        return self.read_html(self.base).replace('<!-- LATEST_BLOG -->', f'\"blog/{latest_blog.stem}.html\"')
+        return self.read_html(self.templates / "base.html").replace('<!-- LATEST_BLOG -->', f'\"blog/{latest_blog.stem}.html\"')
 
     def update_html(self, page, placeholder, new_content):
         page_html = self.read_html(page)
@@ -91,6 +90,25 @@ class SiteGenerator:
                 )
             content_html = self.page_wrapper('blog', blog_html)
             self.update_html(self.docs / 'blog' / f'{post.stem}.html', "<!-- CONTENT -->", content_html)
+
+    def add_presentations(self):
+        presentations = self.read_yaml(self.content / 'presentations.yaml').get('presentations', [])
+        presentations_list = [p.get('title', '') for p in presentations]
+        index_content = self.fill_html_template(
+            self.templates / 'presentations-index.html',
+            presentations_list = presentations_list)
+        pres_folder = self.docs / 'presentations'
+        if not pres_folder.exists(): os.mkdir(pres_folder)
+        self.write_html(self.docs / 'presentations/index.html', self.base_html)
+        self.update_html(self.docs / 'presentations/index.html', "<!-- CONTENT -->", index_content)
+        
+        for pres in presentations:
+            pres_filename = self.docs / f'presentations/{pres.get("url").split("/")[-1]}'
+            pres_item_html = self.fill_html_template(
+                self.templates / 'presentations-item.html',
+                **pres)
+            self.write_html(pres_filename, self.base_html)
+            self.update_html(pres_filename, "<!-- CONTENT -->", pres_item_html)
 
     def create_pages(self):
         base_html = self.base_html

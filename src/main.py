@@ -11,6 +11,7 @@ def main():
     gen.add_from_yaml("index")
     gen.add_from_yaml("publications")
     gen.add_from_yaml("software")
+    gen.add_presentations()
     gen.add_blog()
 
 
