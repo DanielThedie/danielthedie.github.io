@@ -1,0 +1,27 @@
+---
+const { url, icon, label, rel = "noopener" } = Astro.props;
+---
+
+<a
+    href={url}
+    class="button"
+    rel={rel}>
+    <span class={icon} style="margin-right:0.4em;"></span>{label}
+</a>
+
+<style>
+ .button {
+     display: inline-block;
+     padding: 0.6em 1em;
+     background: #6495ED;
+     color: #fff;
+     border-radius: 6px;
+     text-decoration: none;
+     font-weight: bold;
+     transition: background 0.2s;
+ }
+
+ .button:hover {
+     background: #357ab8;
+ }
+</style>

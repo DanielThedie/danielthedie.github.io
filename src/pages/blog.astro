@@ -1,27 +1,14 @@
 ---
+import '../styles/blog.css';
 
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Blog"
 ---
 
-<html lang="en">
-    <head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="icon" href="/favicon.ico" />
-	<meta name="viewport" content="width=device-width" />
-	<meta name="generator" content={Astro.generator} />
-	<title>Daniel Thédié</title>
-    </head>
-    <body>
-        <a href="/">About</a>
-        <a href="/software/">Software</a>
-        <a href="/blog/">Blog</a>
-        
-	<h1>Blog</h1>
-
-        <ul>
-            <li><a href="/posts/2026-01-21_welcome">Welcome</a></li>
-            <li><a href="/posts/2026-02-19_git-workshop">git workshop</a></li>
-        </ul>
-        
-    </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+    <ul>
+        <li><a href="/posts/2026-01-21_welcome">Welcome</a></li>
+        <li><a href="/posts/2026-02-19_git-workshop">git workshop</a></li>
+    </ul>
+</BaseLayout>

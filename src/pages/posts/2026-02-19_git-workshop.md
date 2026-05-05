@@ -1,13 +1,9 @@
 ---
+layout: ../../layouts/BlogPostLayout.astro
 title: 'Gave a workshop on git and GitHub!'
 pubDate: 2026-02-19
 author: 'Daniel Thedie'
-image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
 ---
-
-# Gave a workshop on git and GitHub!
 
 This week, I gave a 2-hour workshop on the basics of using git and GitHub. 9 people attended, and I had a great time walking them through commits, branches and pull requests!
 

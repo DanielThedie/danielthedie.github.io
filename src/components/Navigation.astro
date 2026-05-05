@@ -1,0 +1,127 @@
+---
+---
+
+<nav class="menu">
+    <ul id="menuList">
+        <li><a href="/">About</a></li>
+        <li><a href="/software/">Software</a></li>
+        <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <div class="menu-burger" id="menuBurger" aria-label="Open menu" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<style>
+
+ .menu {
+     display: flex;
+     justify-content: center;
+     margin: 2em 0;
+     position: relative;
+ }
+
+ .menu ul {
+     display: flex;
+     gap: 1.5rem;
+     list-style: none;
+     padding: 0.5em 2em;
+     margin: 0;
+     background: #ebebeb;
+     border-radius: 18px;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+ }
+
+ .menu li {
+     display: inline;
+ }
+
+ .menu a {
+     text-decoration: none;
+     color: #333;
+     font-weight: bold;
+     padding: 0.5em 1em;
+     transition: background 0.2s;
+     border-radius: 18px;
+ }
+
+ .menu a:hover {
+     background: #e0e0e0;
+ }
+
+ .menu-burger {
+     display: none;
+     position: absolute;
+     left: 5%;
+     top: 50%;
+     transform: translateY(-50%);
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 2.5em;
+     height: 2.5em;
+     background: #adadad;
+     border-radius: 50%;
+     cursor: pointer;
+ }
+
+ .menu-burger span {
+     display: block;
+     width: 1.5em;
+     height: 0.2em;
+     background: #fff;
+     margin: 0.2em 0;
+     border-radius: 2px;
+     transition: 0.3s;
+ }
+
+ @media (max-width: 600px) {
+     .menu ul {
+         display: none;
+         flex-direction: column;
+         position: absolute;
+         top: 0;
+         left: 17%;
+         background: #ebebeb;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+         border-radius: 18px;
+         padding: 1em 2em;
+         z-index: 100;
+     }
+     .menu ul.menu-open {
+         display: flex;
+     }
+     .menu-burger {
+         display: flex;
+     }
+ }
+
+</style>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+     const burger = document.getElementById('menuBurger');
+     const menu = document.getElementById('menuList');
+     burger.addEventListener('click', () => {
+         menu.classList.toggle('menu-open');
+     });
+     burger.addEventListener('keypress', (e) => {
+         if (e.key === 'Enter' || e.key === ' ') {
+             menu.classList.toggle('menu-open');
+         }
+     });
+
+     document.addEventListener('click', function(event) {
+         if (
+             menu.classList.contains('menu-open') &&
+             !menu.contains(event.target) &&
+             !burger.contains(event.target)
+         ) {
+             menu.classList.remove('menu-open');
+         }
+     });
+ });
+
+</script>
