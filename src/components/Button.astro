@@ -6,7 +6,7 @@ const { url, icon, label, rel = "noopener" } = Astro.props;
     href={url}
     class="button"
     rel={rel}>
-    <span class={icon} style="margin-right:0.4em;"></span>{label}
+    {icon && <span class={icon} style="margin-right:0.4em;"></span>}{label}
 </a>
 
 <style>

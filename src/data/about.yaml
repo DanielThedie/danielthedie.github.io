@@ -1,17 +1,20 @@
 about:
   - image: resources/PhD_lasers.JPG
+    alt: lasers of different wavelengths reflected in mirrors
     title: PhD
     location: Grenoble, France
     dates: 2016 - 2019
     text: |
       I studied the photophysics of fluorescent proteins to improve their use in single-molecule super-resolution techniques (PALM/STORM). I started creating data analysis scripts (mostly in Matlab) for my research, and to help others in the lab.
   - image: resources/RecB_nuc_fluorescence.png
+    alt: A green and magenta fluorescence image of a bacteria
     title: Post-doc
     location: Edinburgh, UK
     dates: 2020 - 2024
     text: |
       After my PhD, I wanted to apply my knowledge of super-resolution microscopy to biological research. I moved to Edinburgh to study the repair of DNA double-strand breaks in <i>E.coli</i>. I developed my knowledge of image analysis and deep-learning, and created a Python package (PyBerries) to analyse tabular data from microscopy experiments.
   - image: resources/Person_working_on_code.png
+    alt: a drawing of someone working on code
     title: Research Software Engineer
     location: Edinburgh, UK
     dates: 2025 - Present

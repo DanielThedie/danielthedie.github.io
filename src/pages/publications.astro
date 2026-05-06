@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import data from '../data/publications.yaml';
+
+const { publications } = data;
+const pageTitle = "Publications";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div class="publications">
+        {publications.map((item) => (
+        <div class="publications-item">
+            <h3 set:html={item.title}></h3>
+            <p>{item.first_author} et al., {item.year}, {item.journal}</p>
+            {item.doi && <Button url={item.doi} icon="fa fa-link" label="DOI" />}
+        </div>
+        ))}
+    </div>
+</BaseLayout>
+
+<style>
+ .publications-item {
+     background: #fff;
+     padding: 10px;
+     border-radius: 10px;
+     margin: 1em 0;
+     border: 2px solid #6495ED;
+ }
+</style>

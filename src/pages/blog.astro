@@ -1,14 +1,60 @@
 ---
-import '../styles/blog.css';
-
 import BaseLayout from '../layouts/BaseLayout.astro';
+const allPosts = Object.values(import.meta.glob('./blog/*.md', { eager: true })).reverse();
 
 const pageTitle = "Blog"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <ul>
-        <li><a href="/posts/2026-01-21_welcome">Welcome</a></li>
-        <li><a href="/posts/2026-02-19_git-workshop">git workshop</a></li>
+    <ul class="link-list">
+        {allPosts.map((post: any) => <li><a href={post.url}>
+        {post.frontmatter.pubDate.toString().slice(0,10)} - {post.frontmatter.title}</a></li>)}
     </ul>
 </BaseLayout>
+
+<style>
+ ul.link-list {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ ul.link-list li + li {
+     margin-top: 0.6rem;
+ }
+
+ ul.link-list a {
+     display: block;
+     padding: 0.65rem 0.8rem;
+     border-radius: 10px;
+
+     text-decoration: none;
+     color: #1f4fd6;
+
+     border: 1px solid transparent;
+     background: transparent;
+
+     transition: background-color 0.15s ease, border-color 0.15s ease,
+     transform 0.15s ease;
+ }
+
+ ul.link-list a {
+     border-left: 4px solid #c9c9c9;
+     padding-left: 0.9rem;
+ }
+
+ ul.link-list a:hover,
+ ul.link-list a:focus-visible {
+     background: #eeeeee;
+     border-color: #d0d0d0;
+     transform: translateY(-1px);
+     outline: none;
+     border-left-color: #1f4fd6;
+ }
+
+ ul.link-list a:hover::after,
+ ul.link-list a:focus-visible::after {
+     opacity: 1;
+     transform: translateX(0);
+ }
+</style>

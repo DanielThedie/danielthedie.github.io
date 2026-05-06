@@ -1,12 +1,28 @@
 ---
-import '../styles/global.css';
+import data from '../data/about.yaml';
 import '../styles/about.css';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const { about } = data;
 const pageTitle = "About";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-
+    <div class="about">
+        {about.map((item) => (
+        <div class="about-item">
+            <div class="about-side">
+                <div class="about-dot"></div>
+            </div>
+            <img src={item.image} alt={item.alt} class="about-image">
+            <div class="about-content">
+                <h3>{item.dates}</h3>
+                <h4>{item.title} ({item.location})</h4>
+                <p class="about-text" set:html={item.text}>
+                </p>
+            </div>
+        </div>
+        ))}
+    </div>
 </BaseLayout>

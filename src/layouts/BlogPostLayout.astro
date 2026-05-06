@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
 
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-    <p class="metadata">Posted on {frontmatter.pubDate.toString().slice(0,10)} by {frontmatter.author}</p>
+<BaseLayout pageTitle="Blog">
+    <Button url="/blog/" label="Back to list" />
     <div class="blog-item">
+        <h2>{frontmatter.title}</h2>
+        <p class="metadata">Posted on {frontmatter.pubDate.toString().slice(0,10)} by {frontmatter.author}</p>
         <slot />
     </div>
 </BaseLayout>
@@ -27,12 +30,5 @@ const { frontmatter } = Astro.props;
      color: #777777;
      margin-bottom: 3em;
      margin-top: 0;
- }
-
- .blog-buttons {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     width: 100%
  }
 </style>
