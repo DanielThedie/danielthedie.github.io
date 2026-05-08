@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const items = await getCollection("presentations");
+    return items.map((p) => ({
+        params: { slug: p.data.slug },
+        props: { p },
+    }));
+}
+
+const { p } = Astro.props;
+const pageTitle = p.data.title;
+
+const src = `/resources/presentations/${p.data.file}`;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <header class="pres-info">
+        {(p.data.event || p.data.date) && (
+        <p class="event-date">
+            {p.data.event && <span class="event">{p.data.event}</span>}
+            {p.data.date && <time class="date" datetime={p.data.date}>{p.data.date}</time>}
+        </p>
+        )}
+        {p.data.description && <p>{p.data.description}</p>}
+    </header>
+
+    <aside class="hint" aria-label="Presentation controls">
+        <p>
+            Click inside the presentation to enable keyboard navigation.
+            Navigate with <kbd>←  →</kbd> and press <kbd>F</kbd> for full-screen.
+        </p>
+    </aside>
+
+    <div class="frame">
+        <iframe
+            src={src}
+            title={p.data.title}
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            allowfullscreen
+            tabindex="0"
+        />
+    </div>
+
+</BaseLayout>
+
+<style>
+ kbd {
+     font-size: 15pt;
+ }
+
+ .hint{
+     width: fit-content;
+     margin: 0 auto 0.9rem 0;
+     padding: 0.3rem 0.8rem;
+
+     border: 1px solid #e2e2e2;
+     border-radius: 12px;
+     background: #f7f7f7;
+     color: #444;
+
+     font-size: 0.95rem;
+     line-height: 1.4;
+ }
+
+ .hint p{
+     margin: 0;
+ }
+ 
+ .event-date{
+     margin: 0 0 .4rem;
+     display: flex;
+     justify-content: center;
+     gap: .6rem;
+     align-items: baseline;
+     color: #777;
+ }
+
+ .event-date .date::before{
+     content: "•";
+     margin-right: .6rem;
+     color: #aaa;
+ }
+
+ .description{
+     margin: 0;
+     color: #444;
+ }
+ 
+ .frame {
+     width: 100%;
+     aspect-ratio: 16 / 9;
+     border: 1px solid #ddd;
+     border-radius: 12px;
+     overflow: hidden;
+     background: #fff;
+ }
+ 
+ iframe {
+     width: 100%;
+     height: 100%;
+     border: 0;
+ }
+</style>
