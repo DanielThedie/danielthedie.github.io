@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from '../../components/Button.astro';
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -26,6 +27,8 @@ const src = `/resources/presentations/${p.data.file}`;
         )}
         {p.data.description && <p>{p.data.description}</p>}
     </header>
+
+    <Button url="/presentations/" label="Back to list" />
 
     <aside class="hint" aria-label="Presentation controls">
         <p>
@@ -54,7 +57,7 @@ const src = `/resources/presentations/${p.data.file}`;
 
  .hint{
      width: fit-content;
-     margin: 0 auto 0.9rem 0;
+     margin: 1rem auto 0.9rem 0;
      padding: 0.3rem 0.8rem;
 
      border: 1px solid #e2e2e2;
