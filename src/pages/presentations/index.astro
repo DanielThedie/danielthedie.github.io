@@ -4,16 +4,22 @@ import { getCollection } from "astro:content";
 
 const pageTitle = "Presentations";
 const items = await getCollection("presentations");
-items.sort((a, b) => (b.data.date ?? "").localeCompare(a.data.date ?? ""));
+items.sort((a, b) => (b.data.date?.getTime() ?? -Infinity) - (a.data.date?.getTime() ?? -Infinity));
+
+const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+};
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <ul class="link-list">
-    {items.map((p) => (
+    {items.map((p: any) => (
       <li>
           <a href={`/presentations/${p.data.slug}/`}>
               {p.data.title}
-              <div class="event">{p.data.date} - {p.data.event}</div>
+              <div class="event">{p.data.date.toLocaleDateString('en-gb', options)} - {p.data.event}</div>
           </a>
       </li>
       ))}

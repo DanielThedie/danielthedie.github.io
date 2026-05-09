@@ -5,20 +5,11 @@
     "title": {
       "type": "string"
     },
-    "event": {
-      "type": "string"
-    },
-    "slug": {
-      "type": "string"
-    },
-    "file": {
-      "type": "string"
-    },
-    "date": {
+    "pubDate": {
       "type": "string",
       "format": "date-time"
     },
-    "description": {
+    "author": {
       "type": "string"
     },
     "$schema": {
@@ -27,9 +18,7 @@
   },
   "required": [
     "title",
-    "event",
-    "slug",
-    "file",
-    "date"
+    "pubDate",
+    "author"
   ]
 }

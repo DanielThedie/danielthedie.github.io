@@ -9,9 +9,18 @@ const presentations = defineCollection({
     event: z.string(),
     slug: z.string(),
     file: z.string(),
-    date: z.string().optional(),
+    date: z.date(),
     description: z.string().optional(),
   }),
 });
 
-export const collections = { presentations };
+const blog = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.date(),
+    author: z.string()
+  })
+})
+
+export const collections = { presentations, blog };

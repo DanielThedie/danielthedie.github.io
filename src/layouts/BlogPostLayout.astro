@@ -2,14 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 
-const { frontmatter } = Astro.props;
+const { data } = Astro.props;
+const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+};
 ---
 
 <BaseLayout pageTitle="Blog">
     <Button url="/blog/" label="Back to list" />
     <div class="blog-item">
-        <h2>{frontmatter.title}</h2>
-        <p class="metadata">Posted on {frontmatter.pubDate.toString().slice(0,10)} by {frontmatter.author}</p>
+        <h2>{data.title}</h2>
+        <p class="metadata">Posted on {data.pubDate.toLocaleDateString('en-gb', options )} by {data.author}</p>
         <slot />
     </div>
 </BaseLayout>

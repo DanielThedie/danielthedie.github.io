@@ -1,11 +1,17 @@
-import rss, { pagesGlobToRssItems } from '@astrojs/rss';
+import rss from '@astrojs/rss';
+import { getCollection } from 'astro:content'
 
 export async function GET(context) {
-  return rss({
-    title: 'Daniel Thedie | Blog',
-    description: 'Personal blog of Daniel Thedie - Research Software Engineer at the University of Edinburgh',
-    site: context.site,
-    items: await pagesGlobToRssItems(import.meta.glob('./**/*.md')),
-    customData: `<language>en-gb</language>`,
-  });
+    const posts = await getCollection('blog')
+    return rss({
+	title: 'Daniel Thedie | Blog',
+	description: 'Personal blog of Daniel Thedie - Research Software Engineer at the University of Edinburgh',
+	site: context.site,
+	items: posts.map((post) => ({
+	    title: post.data.title,
+	    pubDate: post.data.pubDate,
+	    link: `/posts/${post.id}/`,
+	})),
+	customData: `<language>en-gb</language>`,
+    });
 }

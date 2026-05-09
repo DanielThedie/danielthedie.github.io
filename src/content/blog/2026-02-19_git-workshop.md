@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
 title: 'Gave a workshop on git and GitHub!'
 pubDate: 2026-02-19
 author: 'Daniel Thedie'

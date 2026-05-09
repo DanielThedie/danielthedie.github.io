@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const items = await getCollection("presentations");
-    return items.map((p) => ({
+    return items.map((p: any) => ({
         params: { slug: p.data.slug },
         props: { p },
     }));
@@ -15,14 +15,19 @@ const { p } = Astro.props;
 const pageTitle = p.data.title;
 
 const src = `/resources/presentations/${p.data.file}`;
+const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+};
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <header class="pres-info">
-        {(p.data.event || p.data.date) && (
+        {(p.data.event) && (
         <p class="event-date">
             {p.data.event && <span class="event">{p.data.event}</span>}
-            {p.data.date && <time class="date" datetime={p.data.date}>{p.data.date}</time>}
+            {p.data.date && <span class="date">{p.data.date.toLocaleDateString("en-gb", options)}</span>}
         </p>
         )}
         {p.data.description && <p>{p.data.description}</p>}
