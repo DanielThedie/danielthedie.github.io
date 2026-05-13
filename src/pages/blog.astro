@@ -13,6 +13,8 @@ const options = {
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+    <a href="/rss"><img src="/rss.svg" width="30" class="centre"></a>
+    <br>
     <ul class="link-list">
         {allPosts.map((post: any) => <li><a href={`/blog/${post.id}/`}>
         {post.data.pubDate.toLocaleDateString("en-gb", options)} - {post.data.title}</a></li>)}
