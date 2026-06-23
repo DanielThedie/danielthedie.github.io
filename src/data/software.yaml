@@ -7,7 +7,7 @@ software:
     github: https://github.com/chronopsychiatry/AMBIENT-BD-nocturn
     app: https://nocturn.bio.ed.ac.uk/
     docs: https://github.com/chronopsychiatry/AMBIENT-BD-nocturn/wiki
-    doi: 
+    doi: https://doi.org/10.32614/CRAN.package.nocturn
 
   - title: svgedit
     image: /resources/svgedit_logo.png
