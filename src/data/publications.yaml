@@ -1,4 +1,10 @@
 publications:
+  - title: "nocturn: an online tool and R package for sleep data visualisation"
+    first_author: Thédié
+    journal: Wellcome Open Research (awaiting peer-review)
+    year: 2026
+    doi: https://doi.org/10.12688/wellcomeopenres.26730.1
+  
   - title: Spatio-temporal coordination of the DNA Double-Strand Break repair machinery in <i>Escherichia coli</i>
     first_author: Thédié
     journal: BioRxiv
